@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-devanagari: var(--font-devanagari), "Tiro Devanagari Sanskrit", serif;
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --color-ivory-base: #FAF5EE;
+  --color-blush-soft: #F9ECEF;
+  --color-blush-surface: #F4DFE4;
+  --color-heritage-plum: #4A1D2C;
+  --color-body-cocoa: #5C4A46;
+  --color-champagne-gold: #C69749;
+  --color-champagne-gold-hover: #A87B32;
+  --color-floral-rose: #C86D85;
+  --color-mango-sage: #6E8560;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --bg-ivory: #FAF5EE;
+  --surface-blush: #F9ECEF;
+  --surface-blush-deep: #F4DFE4;
+  --text-heritage: #4A1D2C;
+  --text-body: #5C4A46;
+  --accent-gold: #C69749;
+  --accent-gold-hover: #A87B32;
+  --accent-rose: #C86D85;
+  --accent-sage: #6E8560;
+  --border-gold: rgba(216, 184, 136, 0.4);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FAF5EE;
+  color: #5C4A46;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Reusable Glassmorphic Card Surface */
+.glass-card {
+  background-color: rgba(255, 253, 249, 0.93);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(217, 188, 140, 0.6);
+  box-shadow: 0 12px 36px rgba(74, 29, 44, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-radius: 1.5rem;
+}
+
+/* Delicate Gold Pill Badge */
+.gold-badge {
+  background-color: rgba(255, 253, 249, 0.92);
+  border: 1px solid rgba(216, 184, 136, 0.55);
+  color: #9A6E2A;
+}
+
+/* Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+/* Card hover elevation */
+.luxury-card-shadow {
+  box-shadow: 0 8px 30px rgba(74, 29, 44, 0.06);
+}
+
+.luxury-card-hover {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(74, 29, 44, 0.1);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
